@@ -3,6 +3,7 @@
 namespace JrdnRc\CoinbaseTracker\Laravel\Http\Controllers\Api;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
+use JrdnRc\CoinbaseTracker\Infrastructure\Data\JsonDataStore;
 use JrdnRc\CoinbaseTracker\Laravel\Http\Requests\Api\LogCoinbaseNotification;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -13,15 +14,17 @@ use Symfony\Component\HttpFoundation\Response;
  */
 final class LogCoinbaseRequest
 {
-    /** @var Filesystem */
-    private $filesystem;
+    /** @var JsonDataStore */
+    private $store;
 
     /**
-     * @param Filesystem $filesystem
+     * LogCoinbaseRequest constructor.
+     *
+     * @param JsonDataStore $store
      */
-    public function __construct(Filesystem $filesystem)
+    public function __construct(JsonDataStore $store)
     {
-        $this->filesystem = $filesystem;
+        $this->store = $store;
     }
 
     /**
@@ -38,7 +41,7 @@ final class LogCoinbaseRequest
 
         $now = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
 
-        $this->filesystem->put("coinbase_notifications/{$now}.json", json_encode($data));
+        $this->store->collection('buys')->insert($data);
 
         return response()->json(['result' => 'accepted'], Response::HTTP_ACCEPTED);
     }
