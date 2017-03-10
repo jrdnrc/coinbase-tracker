@@ -18,9 +18,11 @@ use Illuminate\Routing\Router;
 
 $router->group(
     [
-        'middleware' => ['api'],
+        'middleware' => ['web'],
     ],
     function (Router $router) {
-        $router->post('/', Controllers\Api\LogCoinbaseRequest::class);
+        $router->get('/', function () {
+            return response()->redirectTo('https://jcrocker.uk');
+        });
     }
 );
