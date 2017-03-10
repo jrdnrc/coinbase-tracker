@@ -7,6 +7,8 @@
     "require": {
         "php": ">=7.1.0",
         "bugsnag/bugsnag-laravel": "^2.0",
+        "guzzlehttp/guzzle": "^4.0",
+        "jenssegers/mongodb": "^3.2",
         "laravel/browser-kit-testing": "^1.0",
         "laravel/framework": "^5.4.0",
         "laravel/tinker": "~1.0",
@@ -19,7 +21,8 @@
     },
     "autoload": {
         "psr-4": {
-            "JrdnRc\\CoinbaseTracker\\Laravel\\": "app/"
+            "JrdnRc\\CoinbaseTracker\\Laravel\\": "app/",
+            "JrdnRc\\CoinbaseTracker\\": "src/"
         }
     },
     "autoload-dev": {
