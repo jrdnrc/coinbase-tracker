@@ -8,6 +8,14 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 class RouteServiceProvider extends ServiceProvider
 {
     /**
+     * @var string[]
+     */
+    private $routes = [
+        'web',
+        'api',
+    ];
+
+    /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
@@ -24,6 +32,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        require app_path("Http/Routes/api.php");
+        foreach ($this->routes as $route) {
+            require app_path("Http/Routes/{$route}.php");
+        }
     }
 }
