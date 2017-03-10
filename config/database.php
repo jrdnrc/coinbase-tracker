@@ -53,6 +53,20 @@ return [
             'engine' => null,
         ],
 
+        'mongo' => [
+            'driver'    => 'mongodb',
+            'host'      => vsprintf('%s:%s@%s:%s/%s',
+                [
+                    env('MONGO_USERNAME'),
+                    env('MONGO_PASSWORD'),
+                    env('MONGO_HOST'),
+                    env('MONGO_PORT'),
+                    env('MONGO_DATABASE'),
+                ]
+            ),
+            'database' => env('MONGO_DATABASE'),
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

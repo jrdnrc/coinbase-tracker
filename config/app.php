@@ -172,6 +172,7 @@ return [
          * 3rd Party
          */
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -180,6 +181,7 @@ return [
         JrdnRc\CoinbaseTracker\Laravel\Providers\AuthServiceProvider::class,
         JrdnRc\CoinbaseTracker\Laravel\Providers\EventServiceProvider::class,
         JrdnRc\CoinbaseTracker\Laravel\Providers\RouteServiceProvider::class,
+        JrdnRc\CoinbaseTracker\Laravel\Providers\DataStoreProviders::class
 
     ],
 
