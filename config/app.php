@@ -168,6 +168,11 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
+        /**
+         * 3rd Party
+         */
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
