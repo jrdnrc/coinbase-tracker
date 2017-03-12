@@ -15,7 +15,7 @@ interface JsonDataStore extends ConnectionInterface
      * Begin a fluent query against a database table.
      *
      * @param  string $table
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Jenssegers\Mongodb\Query\Builder
      */
-    public function collection($collection);
+    public function collection(string $collection) : \Jenssegers\Mongodb\Query\Builder;
 }

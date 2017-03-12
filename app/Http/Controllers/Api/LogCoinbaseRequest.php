@@ -39,10 +39,8 @@ final class LogCoinbaseRequest
             'get'     => $request->query->all(),
         ];
 
-        $now = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
-
         $this->store->collection('buys')->insert($data);
 
-        return response()->json(['result' => 'accepted'], Response::HTTP_ACCEPTED);
+        return response()->json(['result' => 'accepted'], Response::HTTP_OK);
     }
 }
