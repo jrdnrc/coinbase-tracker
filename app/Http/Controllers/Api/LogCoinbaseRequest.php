@@ -39,7 +39,9 @@ final class LogCoinbaseRequest
             'get'     => $request->query->all(),
         ];
 
-        $this->store->collection('buys')->insert($data);
+        // surround with array syntax to trick mongo into thinking
+        // we are not inserting batches
+        $this->store->collection('buys')->insert([$data]);
 
         return response()->json(['result' => 'accepted'], Response::HTTP_OK);
     }
