@@ -4,8 +4,8 @@ namespace JrdnRc\CoinbaseTracker\Laravel\Providers;
 
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\ServiceProvider;
-use Jenssegers\Mongodb\Connection;
 use JrdnRc\CoinbaseTracker\Infrastructure\Data\JsonDataStore;
+use JrdnRc\CoinbaseTracker\Infrastructure\Data\MongoJsonDataStore;
 
 /**
  * Class DataStoreProviders
@@ -22,7 +22,9 @@ final class DataStoreProviders extends ServiceProvider
     public function register()
     {
         $this->app->bind(JsonDataStore::class, function () {
-            return app(DatabaseManager::class)->connection('mongo');
+            return new MongoJsonDataStore(
+                $this->app->make(DatabaseManager::class)->connection('mongo')
+            );
         });
     }
 }

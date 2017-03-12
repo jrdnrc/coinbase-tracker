@@ -9,7 +9,7 @@ use Illuminate\Database\ConnectionInterface;
  *
  * @author jrdn hannah <jrdn@jrdnhannah.co.uk>
  */
-interface JsonDataStore extends ConnectionInterface
+interface JsonDataStore
 {
     /**
      * Begin a fluent query against a database table.
